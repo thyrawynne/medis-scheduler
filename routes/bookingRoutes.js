@@ -1,10 +1,15 @@
 const express = require("express");
 const router = express.Router();
-const bookingController = require("../controllers/bookingController");
+const ctrl = require("../controllers/bookingController");
 
-router.post("/", bookingController.createBooking); // Untuk membuat booking
-router.get("/", bookingController.getBookings); // Untuk mengambil semua booking
-router.get("/:patientId", bookingController.getBookingsByPatient); // Untuk mengambil booking berdasarkan patientId
-router.get("/doctor/:doctorId", bookingController.getBookingsByDoctor); // Untuk mengambil booking berdasarkan doctorId
+// Check if the controller methods are correctly imported
+console.log(ctrl.createBooking); // This should print a function
+
+router.post("/", ctrl.createBooking); 
+router.get("/", ctrl.getBookings);
+router.get("/patient/:patientId", ctrl.getBookingsByPatient);
+router.get("/doctor/:doctorId", ctrl.getBookingsByDoctor);
+router.patch("/:id", ctrl.updateBookingStatus);
+router.delete("/:id", ctrl.deleteBooking);
 
 module.exports = router;

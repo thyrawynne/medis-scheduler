@@ -15,12 +15,19 @@ const bookingSchema = new mongoose.Schema({
     type: Date,
     required: true,
   },
+  phone: String,
+  email: String,
+  nomorRekamMedis: String,
+  keluhan: String,
+  metodeKonsultasi: String,
   status: {
     type: String,
     enum: ["pending", "confirmed", "completed", "cancelled"],
     default: "pending",
   },
+  address: String,
 });
 
 const Booking = mongoose.model("Booking", bookingSchema);
+
 module.exports = Booking;
